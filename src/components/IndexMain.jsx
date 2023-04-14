@@ -7,12 +7,14 @@ const IndexMain = () => {
         <>
         <div className="mainBox row g-0 bg-dark">
             <Sidebar/>
+            <CentralNavbar/>
             <div id="mainContent" className="col-12 col-lg-8 px-0 overflow-scroll">
-                    <CentralNavbar/>
+                    
                     <MainContent/>
-                </div>
+            </div>
         </div>
         </>
     )
 }
+
 export default IndexMain;

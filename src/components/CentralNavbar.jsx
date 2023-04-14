@@ -6,7 +6,7 @@ import user from '../img/user.png';
 const CentralNavbar = () => {
 
     return(
-        <Navbar id="centralNavbar" className="px-3 navbar navbar-expand-lg navbar-dark d-flex justify-content-end sticky-top bg-opacity-10">
+        <Navbar id="centralNavbar" className="px-3 navbar-dark d-flex justify-content-end sticky-top bg-opacity-10">
             <Container fluid className=" ps-3 ps-lg-1">
                             <span className="d-lg-none text-light fw-bold fs-5">Good evening</span>
                             <div className="btn-group d-none d-lg-block d-flex align-items-center my-2" role="group">
