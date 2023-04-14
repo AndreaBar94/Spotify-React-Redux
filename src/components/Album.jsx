@@ -131,7 +131,6 @@ const Album = () => {
                                 <Button className="me-4" onClick={()=>{dispatch({type: LIKES, payload: track.title})}}>Like!</Button>
                                 <span>{liked.includes(track.title) &&(<span className="text-primary">♡</span>)}</span>
                             </div>
-                            
                         </Container>
                     </>
                 ))}
