@@ -1,44 +1,67 @@
+import { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { LIKES } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Album = () => {
     const params = useParams()
-    const albumFetch = () => {
-        
+    const [info, setInfo]= useState({})
+    const [album, setAlbum] = useState([])
+    const dispatch = useDispatch()
+    const liked = useSelector((state)=> state.likes.content)
+    console.log(liked)
+    const albumFetch = async () => {
+        try {
+			const response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/album/" + params.id + "/");
+			if (response.ok) {
+				const data = await response.json();
+                setInfo(data)
+				setAlbum(data.tracks.data)
+                console.log(album);
+			}
+		} catch (error) {
+			console.log(error);
+		}
     };
+
+    useEffect(()=>{
+        albumFetch()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     return(
         <>
-            <Container fluid className="text-white position-absolute top-0 px-3"
+            <Container fluid className="text-white px-3"
                 style={{backgroundImage: "linear-gradient(#b4b4b4 0%, #000000 100%)"}}>
                 <Row className="row mt-5 px-2 py-2">
                 <Col className="col-12 col-md-3">
-                    <img id="imgAlbum" className="img-fluid" src="assets/imgs/main/image-3.jpg" alt="album-cover"/>
+                    <img id="imgAlbum" className="img-fluid" src={info.cover_big} alt="album-cover"/>
                 </Col>
                 <Col className="col-12 col-md-9 d-flex flex-column justify-content-end">
                     <p id="tipe">ALBUM</p>
-                    <h1 id="titleAlbum" className="fs-4 fw-bold pb-2">MASSIMA CONCENTRAZIONE</h1>
+                    <h1 id="titleAlbum" className="fs-4 fw-bold pb-2">{info.title}</h1>
                     <p className="">
-                    <img id="coverPic" className="rounded-circle" src="assets/imgs/search/image-4.jpg" height="30" alt="album-cover"/>
+                    <img id="coverPic" className="rounded-circle" src="assets/imgs/search/image-4.jpg" height="30" alt="play"/>
                     <span id="authorAlbum" className="fw-bold">Spotify</span>
                     <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fillRule="currentColor" className="bi bi-dot"
                         viewBox="0 0 16 16">
                         <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
                         </svg>
                     </span>
-                    <span id="releaseDate">2017</span>
+                    <span id="releaseDate">{info.release_date}</span>
                     <span className="d-none d-md-inline"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fillRule="currentColor" className="bi bi-dot" viewBox="0 0 16 16">
                         <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
                         </svg>
                     </span>
-                    <span id="NumTrack" className="d-none d-md-inline">12 brani</span>
-                    <span className="text-info d-none d-md-inlinea">16 min 20 sec</span>
+                    <span id="NumTrack" className="d-none d-md-inline">{info.nb_tracks} tracks </span>
+                    <span className="text-info d-none d-md-inline"> Duration: {info.duration}</span>
                     </p>
                 </Col>
                 </Row>
             </Container>
-            <Container id="cont" className="container-fluid bg-dark d-flex justify-content-between px-4">
+            <Container fluid id="cont" className="bg-dark d-flex justify-content-between px-4">
                 <div>
                 <Button variant="none" className="d-none d-md-inline btn btn-primary rounded-circle px-2 me-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="35" fillRule="currentColor" className="bi bi-play-fill"
@@ -99,7 +122,20 @@ const Album = () => {
                 </Col>
                 </Row>
             </Container>
-            <Container fluid id="containerAlbum" className=" text-white bg-dark mt-3 px-4"></Container>
+            <Container fluid id="containerAlbum" className=" text-white bg-dark pt-3 pb-7 px-4">
+            {album.map((track)=>(
+                    <>
+                        <Container fluid key={track.id} className="d-flex align-items-center justify-content-between">
+                            <p className="ms-3">{track.title}, {track.duration} </p>
+                            <div>
+                                <Button className="me-4" onClick={()=>{dispatch({type: LIKES, payload: track.title})}}>Like!</Button>
+                                <span>{liked.includes(track.title) &&(<span className="text-primary">♡</span>)}</span>
+                            </div>
+                            
+                        </Container>
+                    </>
+                ))}
+            </Container>
         </>
     )
 };

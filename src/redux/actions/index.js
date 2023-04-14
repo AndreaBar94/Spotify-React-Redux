@@ -1,5 +1,6 @@
 export const ALBUM_INDEX = "ALBUM_INDEX";
 export const ALBUMS = "ALBUMS";
+export const LIKES = "LIKES";
 
 export const fetchAlbumIndexAction = async (dispatch) => {
 	try {

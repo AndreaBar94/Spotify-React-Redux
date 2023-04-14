@@ -10,7 +10,7 @@ function App() {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<IndexMain/>}/>
-				<Route path="/album" element={<Album />} />
+				<Route path="/album/:id" element={<Album />} />
 			</Routes> 
 			<Playbar/>
 		</BrowserRouter>

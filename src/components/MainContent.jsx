@@ -318,11 +318,11 @@ const MainContent = () => {
 
 						<div className="container-fluid ">
 							<div className="row row-cols-md-5 madeForYouRow ">
-								<div className="col madeForYouA"><img src={albums[0].cover} alt="album-logo" /></div>
-								<div className="col madeForYouB"><img src={album1.cover} alt="album-logo" /></div>
-								<div className="col madeForYouC"><img src={album2.cover} alt="album-logo" /></div>
-								<div className="col madeForYouD"><img src={album3.cover} alt="album-logo" /></div>
-								<div className="col madeForYouE"><img src={album4.cover} alt="album-logo" /></div>
+								<div className="col madeForYouA"><Link to={"/album/" + albums[0].id}><img src={albums[0].cover} alt="album-logo" /></Link></div>
+								<div className="col madeForYouB"><Link to={"/album/" + album1.id}><img src={album1.cover} alt="album-logo" /></Link></div>
+								<div className="col madeForYouC"><Link to={"/album/" + album2.id}><img src={album2.cover} alt="album-logo" /></Link></div>
+								<div className="col madeForYouD"><Link to={"/album/" + album3.id}><img src={album3.cover} alt="album-logo" /></Link></div>
+								<div className="col madeForYouE"><Link to={"/album/" + album4.id}><img src={album4.cover} alt="album-logo" /></Link></div>
 							</div>
 						</div>
 					</Container>
@@ -336,11 +336,11 @@ const MainContent = () => {
 
 						<Container className="container-fluid">
 							<div className="row row-cols-md-5 yourEpisodesRow">
-								<div className="col yourEpisodesA"><img src={album5.cover} alt="album-logo" /></div>
-								<div className="col yourEpisodesB"><img src={album6.cover} alt="album-logo" /></div>
-								<div className="col yourEpisodesC"><img src={album7.cover} alt="album-logo" /></div>
-								<div className="col yourEpisodesD"><img src={album8.cover} alt="album-logo" /></div>
-								<div className="col yourEpisodesE"><img src={album9.cover} alt="album-logo" /></div>
+								<div className="col yourEpisodesA"><Link to={"/album/" + album5.id}><img src={album5.cover} alt="album-logo" /></Link></div>
+								<div className="col yourEpisodesB"><Link to={"/album/" + album6.id}><img src={album6.cover} alt="album-logo" /></Link></div>
+								<div className="col yourEpisodesC"><Link to={"/album/" + album7.id}><img src={album7.cover} alt="album-logo" /></Link></div>
+								<div className="col yourEpisodesD"><Link to={"/album/" + album8.id}><img src={album8.cover} alt="album-logo" /></Link></div>
+								<div className="col yourEpisodesE"><Link to={"/album/" + album9.id}><img src={album9.cover} alt="album-logo" /></Link></div>
 							</div>
 						</Container>
 					</Container>
