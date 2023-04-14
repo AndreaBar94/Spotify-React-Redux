@@ -1,6 +1,7 @@
 @import "bootstrap-overrides";
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+// @import "./assets/fonts/circular-font.css";
 
 .dropdown-item:hover {
 	background-color: #3e3e3e;
@@ -12,13 +13,20 @@
 
 body {
 	font-family: "Circular";
-	background-color: $dark;
 }
 
 #playbarMobile {
 	position: fixed;
 	bottom: 80px;
 	z-index: 1;
+}
+
+.likedSongsIconBg {
+	background: linear-gradient(135deg, #450af5, #c4efd9);
+}
+
+.yourEpisodesIconBg {
+	background: #004537;
 }
 
 @media screen and (max-width: 320px) {
@@ -36,8 +44,11 @@ body {
 	z-index: 1;
 }
 
-.spotify-logo-text {
-	width: 130px;
+.spotify-logo-image {
+	width: 150px;
+	height: auto;
+	padding-top: 1rem;
+	padding-bottom: 3rem;
 }
 
 @media screen and (max-width: 1220px) {
@@ -105,18 +116,28 @@ main {
 	background-color: $dark;
 }
 
-#friendsPicture {
-	width: 15%;
-	height: 15%;
-}
-
 #friendsActivity {
-	background-color: $dark;
-	padding-bottom: 10rem;
+	#friendsProfile {
+		line-height: 0.1rem;
+		#friendsPicture {
+			width: 15%;
+			height: 15%;
+		}
+	}
+	#friendsActivity {
+		background-color: $dark;
+		padding-bottom: 10rem;
+	}
 }
 
-.friendsInfo {
-	line-height: 0.3rem;
+#centralNavbar {
+	background-color: #070707;
+	opacity: 98%;
+	z-index: -1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 }
 
 #sidebarDesktop {
@@ -143,11 +164,9 @@ main {
 }
 
 #artistThumbnail {
-	// background-image: url(https://www.romatoday.it/~media/horizontal-hi/51536659594995/concerto-maneskin-9-luglio-2.jpg);
+	background-image: url(https://www.romatoday.it/~media/horizontal-hi/51536659594995/concerto-maneskin-9-luglio-2.jpg);
 	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	height: 60vh;
+	height: 40vh;
 }
 
 @media screen and (max-width: 991px) {
@@ -163,15 +182,6 @@ main {
 			flex-direction: row;
 		}
 	}
-	#artistMainContent {
-		position: static;
-	}
-	#centralNavbar {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-	}
 }
 
 #homeMainCard {
@@ -185,94 +195,10 @@ main {
 }
 
 .mobileHomeMainCards {
-	line-height: 1rem;
+	line-height: 0.5rem;
 }
 
 .horizontal-scrollable {
 	overflow-x: auto;
 	white-space: nowrap;
-}
-
-@media screen and (max-width: 777px) {
-	#cont {
-		margin-top: 30rem;
-	}
-}
-@media screen and (min-width: 768px) {
-	#cont {
-		margin-top: 18rem;
-	}
-}
-@media screen and (min-width: 865px) {
-	#cont {
-		margin-top: 20rem;
-	}
-}
-@media screen and (min-width: 992px) {
-	#cont {
-		margin-top: 17rem;
-	}
-}
-
-.playbarSongData {
-	line-height: 0.8rem;
-}
-#popularList {
-	list-style: none;
-	counter-reset: my-counter 0;
-
-	li {
-		position: relative;
-	}
-	li:before {
-		content: counter(my-counter) " ";
-		counter-increment: my-counter;
-		position: absolute;
-		left: -25px;
-		top: 25px;
-	}
-}
-.likedSongsIconBg {
-	background: linear-gradient(135deg, #450af5, #c4efd9);
-}
-.yourEpisodesIconBg {
-	background: #004537;
-}
-
-#tipe {
-	text-transform: uppercase;
-}
-
-.login {
-	padding-top: 10rem;
-}
-
-.imgGlow {
-	box-shadow: 0px 0px 10px #fff;
-}
-
-.madeForYouRow {
-	flex-wrap: nowrap;
-	overflow-x: scroll;
-}
-
-.yourEpisodesRow {
-	flex-wrap: nowrap;
-	overflow-x: scroll;
-}
-
-input[type="range"] {
-	overflow: hidden;
-	width: 120px;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-	height: 3px;
-	background: $light;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-	width: 10px;
-	height: 10px;
-	background: $primary;
 }

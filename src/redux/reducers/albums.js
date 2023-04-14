@@ -1,4 +1,4 @@
-import { ALBUM_INDEX } from "../actions";
+import { ALBUMS } from "../actions";
 
 const initialState = {
 	content: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 const mainReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case ALBUM_INDEX:
+		case ALBUMS:
 			return {
 				...state,
 				content: [action.payload],
